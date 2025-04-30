@@ -1,0 +1,32 @@
+def calculator():
+    print("Simple Calculator")
+    expression = input("Enter expression (e.g. 4 + 5): ")
+
+    try:
+        num1_str, operator, num2_str = expression.split()
+        num1 = float(num1_str)
+        num2 = float(num2_str)
+    except ValueError:
+        print("Invalid expression format. Use: number operator number (e.g. 4 + 5)")
+        return
+
+    match operator:
+        case '+':
+            result = num1 + num2
+        case '-':
+            result = num1 - num2
+        case '*':
+            result = num1 * num2
+        case '/':
+            if num2 == 0:
+                print("Error! Division by zero.")
+                return
+            result = num1 / num2
+        case _:
+            print("Invalid operator. Use one of: +, -, *, /")
+            return
+
+    print(f"Result: {num1} {operator} {num2} = {result}")
+
+if _name_ == "_main_":
+    calculator()
